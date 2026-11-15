@@ -117,7 +117,7 @@ export default function LegalDocs({ siteKey }: { siteKey: string }) {
     <div className="cms-editor__legal">
       <h2>Rechtsdokumente (PDF)</h2>
       <p className="marginalia">
-        Hochgeladene PDFs — z. B. die AGB — werden von der öffentlichen Website als
+        Hochgeladene PDFs, z. B. die AGB, werden von der öffentlichen Website als
         Vorschau und Download eingebunden. Nach dem Speichern werden nur die betroffenen
         Seiten dieser Sprache neu gerendert. Pro Sprache eine Datei; maximal 8 MB.
       </p>

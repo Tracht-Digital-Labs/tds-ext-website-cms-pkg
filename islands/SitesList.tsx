@@ -628,7 +628,7 @@ function BlockEditor({
   const toForm = () => {
     const v = currentValue();
     if (v === null) {
-      setStatus("Ungültiges JSON — Formular nicht verfügbar.");
+      setStatus("Ungültiges JSON: Formular nicht verfügbar.");
       return;
     }
     setValue(v);

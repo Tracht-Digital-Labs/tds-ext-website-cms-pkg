@@ -99,7 +99,7 @@ export default function SiteRegistry() {
       <form className="tds-stack tds-stack--tight" onSubmit={create} noValidate>
         <p className="marginalia">
           Der Schlüssel verbindet die Inhalte mit der öffentlichen Website und lässt sich
-          später nicht ändern — <code>landingpage</code>, <code>blog</code>, …
+          später nicht ändern: <code>landingpage</code>, <code>blog</code>, …
         </p>
         <div className="tds-row">
           <label className="block text-sm">

@@ -25,13 +25,13 @@ return [
         'description' => 'Die Nachfolgerin von `tds-content-api`s offener `/content/landing`, '
             . 'unter demselben Pfad, damit Landingpage und Blog **unverändert** '
             . 'weiterlesen. Unauthentifiziert und lesend. **Ein Datenbankproblem gibt '
-            . 'leere Blöcke zurück, niemals 500** — die öffentliche Seite fällt dann auf '
+            . 'leere Blöcke zurück, niemals 500**, die öffentliche Seite fällt dann auf '
             . 'ihre eingebauten Vorgaben zurück, statt zu scheitern. Die Kehrseite: '
             . 'eine kaputte Datenbank sieht wie „kein Inhalt gepflegt" aus.',
         'auth' => 'public',
         'params' => [$langQuery],
         'responses' => [
-            ['status' => 200, 'description' => '`{blocks: {<section_key>: <value>}}` — Objekt, auch wenn leer.'],
+            ['status' => 200, 'description' => '`{blocks: {<section_key>: <value>}}`: Objekt, auch wenn leer.'],
         ],
     ],
     [
@@ -45,7 +45,7 @@ return [
             . 'Gleiche Ausfallsicherheit wie `/content/landing`.',
         'auth' => 'public',
         'responses' => [
-            ['status' => 200, 'description' => '`{docs: {<key>: {<lang>: {filename, sizeBytes, versionLabel, updatedAt}}}}` — verschachtelte Objekte, auch wenn leer.'],
+            ['status' => 200, 'description' => '`{docs: {<key>: {<lang>: {filename, sizeBytes, versionLabel, updatedAt}}}}`, verschachtelte Objekte, auch wenn leer.'],
         ],
     ],
     [
@@ -53,18 +53,18 @@ return [
         'pattern' => '/content/legal/{key:[a-z0-9-]+}.pdf',
         'tag' => 'Öffentlich',
         'summary' => 'Ein Rechtsdokument der gebundenen Site herunterladen',
-        'description' => 'Die Bytes selbst — das, was die Landingpage beim Rendern lädt und was '
+        'description' => 'Die Bytes selbst, das, was die Landingpage beim Rendern lädt und was '
             . 'ein Besucher direkt aufrufen kann. Die Ressourcenbindung des Site-Keys '
             . 'wählt die Site eindeutig; ohne Bindung gilt für die Übergangsrelease die '
             . 'bisherige Standard-Site.',
         'auth' => 'public',
         'params' => [
             $docKey,
-            ['in' => 'query', 'name' => 'lang', 'type' => 'de|en', 'description' => 'Sprachfassung. Rechtstexte werden **nie** maschinell übersetzt — die englische Fassung ist ein eigener Upload.'],
+            ['in' => 'query', 'name' => 'lang', 'type' => 'de|en', 'description' => 'Sprachfassung. Rechtstexte werden **nie** maschinell übersetzt, die englische Fassung ist ein eigener Upload.'],
         ],
         'responses' => [
             ['status' => 200, 'description' => 'Das PDF als `application/pdf`.'],
-            ['status' => 404, 'description' => 'Kein Dokument für diesen Schlüssel und diese Sprache — auch bei einem Datenbankfehler.'],
+            ['status' => 404, 'description' => 'Kein Dokument für diesen Schlüssel und diese Sprache, auch bei einem Datenbankfehler.'],
         ],
     ],
     [
@@ -89,7 +89,7 @@ return [
         'description' => 'Multipart-Feld **`file`**. Es gibt genau ein Dokument je '
             . '(Site × Schlüssel × Sprache); ein Upload ersetzt das vorhandene. Der '
             . 'Dateityp wird an der **Magic Number** geprüft, nicht am gemeldeten '
-            . 'Media-Type — die Angabe des Clients ist kein Beweis. Die Bytes landen in '
+            . 'Media-Type, die Angabe des Clients ist kein Beweis. Die Bytes landen in '
             . 'einem `MEDIUMBLOB`, deshalb die 8-MB-Grenze und deshalb braucht der Host '
             . 'kein beschreibbares Verzeichnis.',
         'permission' => 'website:write',
@@ -116,7 +116,7 @@ return [
         'tag' => 'Rechtsdokumente',
         'summary' => 'Rechtsdokument entfernen',
         'description' => 'Die öffentliche Seite fällt danach auf ihre mitcommittete '
-            . 'Rückfalldatei zurück — der Link ist also nie tot.',
+            . 'Rückfalldatei zurück, der Link ist also nie tot.',
         'permission' => 'website:write',
         'params' => [$site, $docKey, ['in' => 'query', 'name' => 'lang', 'type' => 'de|en', 'description' => 'Sprachfassung; Vorgabe `de`.']],
         'responses' => [
@@ -132,7 +132,7 @@ return [
         'tag' => 'Rechtsdokumente',
         'summary' => 'Gespeichertes Dokument in der Verwaltung ansehen',
         'description' => 'Nötig, weil die öffentliche Route immer nur die **Standard-Site** '
-            . 'ausliefert — wer eine zweite Site pflegt, käme sonst nicht an die eigene '
+            . 'ausliefert, wer eine zweite Site pflegt, käme sonst nicht an die eigene '
             . 'Fassung heran.',
         'permission' => 'website:read',
         'params' => [$site, $docKey, ['in' => 'query', 'name' => 'lang', 'type' => 'de|en', 'description' => 'Sprachfassung; Vorgabe `de`.']],
@@ -163,7 +163,7 @@ return [
         'summary' => 'Alle registrierten Sites',
         'permission' => 'website:read',
         'responses' => [
-            ['status' => 200, 'description' => '`{sites: [{id, site_key, name, cache_url, updated_at}]}` — `cache_url` ist nur der Übergangs-Fallback; neue Verbindungen stehen in der Verbindungsressource.'],
+            ['status' => 200, 'description' => '`{sites: [{id, site_key, name, cache_url, updated_at}]}`: `cache_url` ist nur der Übergangs-Fallback; neue Verbindungen stehen in der Verbindungsressource.'],
             ['status' => 401, 'description' => 'Keine Sitzung.'],
             ['status' => 403, 'description' => 'Kein `website:read`.'],
         ],
@@ -265,7 +265,7 @@ return [
         'permission' => 'website:read',
         'params' => [$site, $blockKey, $langQuery],
         'responses' => [
-            ['status' => 200, 'description' => '`{value, lang}` — `value` ist ein strukturiertes Objekt, kein Text.'],
+            ['status' => 200, 'description' => '`{value, lang}`: `value` ist ein strukturiertes Objekt, kein Text.'],
             ['status' => 401, 'description' => 'Keine Sitzung.'],
             ['status' => 403, 'description' => 'Kein `website:read`.'],
             ['status' => 404, 'description' => 'Unbekannte Site.'],
@@ -279,7 +279,7 @@ return [
         'description' => 'Zwei Seiteneffekte, die man kennen muss: das Speichern **löscht '
             . 'das `machine_translated`-Kennzeichen** (was hier gespeichert wird, ist '
             . 'redaktioneller Text), und es **legt die Gegensprache maschinell an oder '
-            . 'frischt sie auf** (DeepL, best effort) — eine von Hand übersetzte Fassung '
+            . 'frischt sie auf** (DeepL, best effort), eine von Hand übersetzte Fassung '
             . 'wird dabei nie überschrieben.'
             . "\n\n" . 'Anschließend wird **nur der betroffene Seiten-Cache** neu gebaut: '
             . 'gemeldet wird der Abschnitt (`{type:"block", id:"<key>"}`), und welche '
@@ -295,7 +295,7 @@ return [
             ['in' => 'body', 'name' => 'lang', 'type' => 'de|en', 'description' => 'Sprache des gespeicherten Inhalts; Vorgabe `de`.'],
         ],
         'responses' => [
-            ['status' => 200, 'description' => '`{ok: true, translated: bool, cache_status, cached, rebuilt, skipped, failed, unknownEvents}` — '
+            ['status' => 200, 'description' => '`{ok: true, translated: bool, cache_status, cached, rebuilt, skipped, failed, unknownEvents}`: '
                 . '`cached` sagt, ob wirklich ein Cache-Neubau rausgegangen ist (Cache-URL '
                 . 'und Token vorhanden). Ohne dieses Feld müsste die Oberfläche einen Erfolg '
                 . 'für eine Anfrage melden, die niemand abgeschickt hat.'],
@@ -310,7 +310,7 @@ return [
         'pattern' => '/cms/{site:[a-z0-9-]+}/blocks/{key:[a-z0-9_-]+}',
         'tag' => 'Inhalte',
         'summary' => 'Inhaltsblock löschen',
-        'description' => 'Die öffentliche Seite fällt danach auf ihre Vorgabe zurück — '
+        'description' => 'Die öffentliche Seite fällt danach auf ihre Vorgabe zurück: '
             . 'unauffällig, deshalb ist Löschen hier keine sichtbare Änderung.',
         'permission' => 'website:write',
         'params' => [$site, $blockKey, $langQuery],
@@ -328,7 +328,7 @@ return [
         'summary' => 'Fehlende Übersetzungen für alle Blöcke einer Site nachziehen',
         'description' => 'Läuft über jeden von Hand gepflegten Block und legt die '
             . 'Gegensprache maschinell an. **Maschinelle Zeilen sind Ziele, keine '
-            . 'Quellen** — sie werden übersprungen, sonst würde eine Übersetzung eine '
+            . 'Quellen**, sie werden übersprungen, sonst würde eine Übersetzung eine '
             . 'Übersetzung übersetzen. `translation_skipped` zählt beides zusammen: bereits '
             . 'vorhandene Übersetzungen und maschinelle Zeilen. Nur wenn wirklich etwas '
             . 'entstanden ist, wird der Seiten-Cache der Site neu gebaut.',

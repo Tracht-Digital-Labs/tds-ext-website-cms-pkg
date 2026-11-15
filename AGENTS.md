@@ -32,6 +32,7 @@ composer install && composer test   # phpunit; DB-backed tests need TDS_TEST_DB_
 - SWR stays visibly stale and never clobbers unsaved input.
 - Extend `SECTION_SCHEMAS` and `PAGES` together, with shapes copied from the landing page.
 - Migrations stay in the `20260727*` band; never delete one. Don't touch `version`; stay in `0.5.x`.
+- Follows the TDS quality standard (`../tds-ops/standards/quality.md`): no AI slop, clean code.
 
 ## Topic files
 
