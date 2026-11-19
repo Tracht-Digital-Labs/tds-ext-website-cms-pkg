@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Alert, ConfirmDialog, Spinner, toast } from "@tracht-digital-solutions/tds-shared/components";
-import { usePairing } from "@tracht-digital-solutions/tds-shared/admin";
-import { apiFetch, sendJson } from "@tracht-digital-solutions/tds-shared/api";
-import { invalidate, staleClass, useCachedJson } from "@tracht-digital-solutions/tds-shared/data";
+import { Alert, ConfirmDialog, Spinner, toast } from "@tracht-digital-labs/tds-shared/components";
+import { usePairing } from "@tracht-digital-labs/tds-shared/admin";
+import { apiFetch, sendJson } from "@tracht-digital-labs/tds-shared/api";
+import { invalidate, staleClass, useCachedJson } from "@tracht-digital-labs/tds-shared/data";
 
 interface Site {
   id: number;

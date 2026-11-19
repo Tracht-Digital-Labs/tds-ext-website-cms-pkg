@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Alert, Spinner } from "@tracht-digital-solutions/tds-shared/components";
-import { SecretField, useRuntimeSettings } from "@tracht-digital-solutions/tds-shared/admin";
+import { Alert, Spinner } from "@tracht-digital-labs/tds-shared/components";
+import { SecretField, useRuntimeSettings } from "@tracht-digital-labs/tds-shared/admin";
 
 /**
  * Website-CMS settings section — DeepL key and auto-translate flag, persisted

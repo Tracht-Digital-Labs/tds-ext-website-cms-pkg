@@ -1,4 +1,4 @@
-import { defineExtension } from "@tracht-digital-solutions/tds-frontend-contract";
+import { defineExtension } from "@tracht-digital-labs/tds-frontend-contract";
 
 /**
  * Website-CMS extension — request-time content management for public sites,
@@ -34,7 +34,7 @@ export default defineExtension({
     {
       id: "website-cms-sites",
       title: "Websites",
-      island: "@tracht-digital-solutions/tds-ext-website-cms/widgets/Widget.astro",
+      island: "@tracht-digital-labs/tds-ext-website-cms/widgets/Widget.astro",
       size: "sm",
       permission: "website:read",
       dataEndpoint: "/cms/summary",
@@ -45,14 +45,14 @@ export default defineExtension({
     {
       id: "website-cms",
       label: "Website-CMS",
-      island: "@tracht-digital-solutions/tds-ext-website-cms/islands/Settings.astro",
+      island: "@tracht-digital-labs/tds-ext-website-cms/islands/Settings.astro",
       order: 40,
     },
   ],
   routes: [
     {
       pattern: "/website",
-      entrypoint: "@tracht-digital-solutions/tds-ext-website-cms/pages/Index.astro",
+      entrypoint: "@tracht-digital-labs/tds-ext-website-cms/pages/Index.astro",
       permission: "website:read",
     },
   ],

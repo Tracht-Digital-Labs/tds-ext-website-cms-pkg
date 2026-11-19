@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Alert, ConfirmDialog, Spinner, toast } from "@tracht-digital-solutions/tds-shared/components";
-import { apiFetch, apiUrl } from "@tracht-digital-solutions/tds-shared/api";
-import { FileDropZone } from "@tracht-digital-solutions/tds-shared/dropzone";
-import { formatBytes } from "@tracht-digital-solutions/tds-shared/format";
-import { invalidate, staleClass, useCachedJson } from "@tracht-digital-solutions/tds-shared/data";
+import { Alert, ConfirmDialog, Spinner, toast } from "@tracht-digital-labs/tds-shared/components";
+import { apiFetch, apiUrl } from "@tracht-digital-labs/tds-shared/api";
+import { FileDropZone } from "@tracht-digital-labs/tds-shared/dropzone";
+import { formatBytes } from "@tracht-digital-labs/tds-shared/format";
+import { invalidate, staleClass, useCachedJson } from "@tracht-digital-labs/tds-shared/data";
 
 export interface LegalDoc {
   docKey: string;
